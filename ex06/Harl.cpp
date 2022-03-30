@@ -48,29 +48,35 @@ std::string getIndex(std::string level) {
 
 void Harl::complain(std::string level) {
 
-	map::const_iterator i = getMap().find(getIndex(level));
-	if (i == getMap().end())
-		return ;
-	while (i != getMap().end()) {
-		std::cout << "[" << i->first << "]" << std::endl;
-		(this->*(i->second))();
-		std::cout << std::endl;
-		i++;
+	initFunc();
+	int i = getIndex(level);
+	if (i == 4) {
+		std::cout << "[Probably complaining about insignificant problems]"
+					<< std::endl;
+	} else {
+		while (i < 4) {
+			std::cout << "[" << m_level[i] << "]" << std::endl;
+			(this->*m_func[i++])();
+			std::cout << std::endl;
+		}
 	}
 }
 
-const Harl::map& Harl::getMap() {
+int Harl::getIndex(std::string level) {
 
-	static const map m = constructMap();
-	return m;
+	size_t i = 0;
+	size_t nbOfElem = sizeof(m_level) / sizeof(*m_level);
+
+	while (i < nbOfElem && level != m_level[i]) {
+		i++;
+	}
+	return i;
 }
 
-const Harl::map Harl::constructMap() {
+void Harl::initFunc() {
 
-	map m;
-	m["1"] = &Harl::debug;
-	m["2"] = &Harl::info;
-	m["3"] = &Harl::warning;
-	m["4"] = &Harl::error;
-	return m;
+	m_level[0] = "DEBUG"; m_func[0] = &Harl::debug;
+	m_level[1] = "INFO"; m_func[1] = &Harl::info;
+	m_level[2] = "WARNING"; m_func[2] = &Harl::warning;
+	m_level[3] = "ERROR"; m_func[3] = &Harl::error;
 }

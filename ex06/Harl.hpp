@@ -5,9 +5,10 @@
 #include <map>
 #include <string>
 
+
 class Harl {
 
-	typedef std::map<std::string, void(Harl::*)() const> map;
+	typedef void(Harl::*harlPtr)() const;
 
 	public:
 		Harl();
@@ -15,12 +16,14 @@ class Harl {
 		void complain(std::string level);
 
 	private:
+		std::string m_level[4];
+		harlPtr m_func[4];
 		void debug() const;
 		void info() const;
 		void warning() const;
 		void error() const;
-		const map& getMap();
-		const map constructMap();
+		void initFunc();
+		int getIndex(std::string level);
 };
 
 
