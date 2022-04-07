@@ -8,6 +8,7 @@ int main() {
 	myFriendHarl.complain("INFO");
 	myFriendHarl.complain("WARNING");
 	myFriendHarl.complain("ERROR");
+	myFriendHarl.complain("lajsdf");
 
 	return 0;
 }

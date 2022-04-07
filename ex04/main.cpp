@@ -1,13 +1,10 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <string>
 #include <cstring>
 #include <cstdlib>
 
 // Store file content in a string
-
-
 
 std::string getContent(char *fileName) {
 

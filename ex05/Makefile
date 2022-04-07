@@ -5,9 +5,9 @@ SRC_FILES 	=	main.cpp \
 
 OBJS_DIR	=	objs
 
-SRC_DIR		=	ex05
+SRC_DIR		=	.
 
-INC_DIR		=	ex05
+INC_DIR		=	.
 
 INC_FILES	=	Harl.hpp \
 

@@ -5,6 +5,7 @@
 int main()
 {
 	{
+		Weapon test;
 		Weapon club = Weapon("crude spiked club");
 		HumanA bob("Bob", club);
 		bob.attack();
